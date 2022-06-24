@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/chart.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/subirDato" method="post">
+        <label for="humedad" id="humedad">humedad</label>
+        <input type="text" name="humedad" id="humedad">
+        <label for="presion" id="presion">presion</label>
+        <input type="text" name="presion" id="presion">
+        <input type="submit" onclick="clicked();">
+    </form>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <div>
+        <canvas id="myChart2"></canvas>
+    </div>
+
+</body>
+</html>
