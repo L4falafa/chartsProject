@@ -76,6 +76,9 @@ function subirDatosDB (){
 
 //Actualizar grafico cada x segundos
 
+setInterval(() => {
+    updateChart(chart);
+}, 1*1000);
 
 //Actualizar Dato Funcion
 function updateChart(chart){
