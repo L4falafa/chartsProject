@@ -1,4 +1,273 @@
-body{
-    background-color: lightgrey;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(5, auto);
+    margin-top: 40px;
 }
 
+/*======================== NAV =========================*/
+
+.menu{
+    grid-column: 2 / 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    border-top: solid .5px;
+    border-bottom: solid .5px;
+}
+
+.menu--logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu--logo img{
+    height: 45px;
+}
+
+.menu--options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu--options ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.menu--options li{
+    margin: 0px 20px;
+    list-style: none;
+}
+
+.menu--options a{
+    text-decoration: none;
+    color: gray;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu--options a:hover{
+    color: rgb(253, 69, 100);
+    transition: .5s;
+}
+
+/*==================== INICIO =======================*/
+
+.inicio--left{
+    grid-column: 2 / 6;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 90px;
+}
+
+.inicio--left h1{
+    font-family: 'Poppins', sans-serif;
+    color: rgb(253, 69, 100);
+    font-size: 3rem;
+}
+
+.inicio--left h1::first-line{
+    color: gray;
+}
+
+.inicio--left p{
+    font-family: 'Poppins', sans-serif;
+    margin-top: -10px;
+}
+
+.inicio--right{
+    grid-column: 8 / 10;
+    margin-bottom: 90px;
+}
+
+.inicio--right img{
+    height: 275px;
+    margin-top: 25px;
+}
+
+/*========================== FORMULARIO ==========================*/
+
+.container--formulario {
+    grid-column: 2 / 10;
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+}
+
+
+.logo {
+    text-align: center;
+    font-size: 2.3em;
+    color: gray;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo span {
+    color: rgb(253, 69, 100);
+}
+
+.contact-wrapper {
+    box-shadow: 0 0 20px 0 rgb(211, 211, 211);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.contact-wrapper > * {
+    padding: 2em;
+}
+
+.contact-form {
+    background: rgb(221, 221, 221);
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form form p {
+    margin: 0;
+    padding: 1em;
+}
+
+.contact-form form .block {
+    grid-column: 1 / 3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    font-family: 'Quicksand';
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: black;
+    border-bottom: 1px solid rgb(253, 69, 100);
+}
+
+.contact-form form button {
+    background: rgb(253, 69, 100);
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+    background: rgb(253, 69, 100);
+    color: #fff;
+    transition: background-color 1s ease-out;
+    outline: 0;
+    cursor: pointer;
+}
+
+.contact-info {
+    background: rgb(255, 196, 206);
+}
+
+.contact-info h4{
+    text-align: center;
+    margin: 0 0 1rem 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-info p {
+    text-align: start;
+    margin: 0 0 1rem 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-info a{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.contact-info i{
+    font-size: 3rem;
+    color: black;
+}
+
+.contact-info i:hover{
+    color: gray;
+    transition: .5s;
+}
+
+/*==================== ESTADISTICA =====================*/
+
+.estadistica{
+    grid-column: 2 / 10;
+    margin-top: 200px;
+}
+
+/*==================== FOOTER =====================*/
+
+.footer{
+    grid-column: 2 / 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 100px;
+    border-top: solid 2px gray;
+}
+
+.footer--left{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer--left h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.footer--left ul{
+    margin-top: -5px;
+    margin-left: -15px;
+    list-style: none;
+}
+
+.footer--left a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer--left a:hover{
+    color: rgb(253, 69, 100);
+    transition: .5s;
+}
+
+.footer--left li{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer--right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer--right img{
+    height: 80px;
+}

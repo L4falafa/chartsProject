@@ -1,23 +1,46 @@
+const autocolors = window['chartjs-plugin-autocolors'];
 
- 
+Chart.register(autocolors);
+
+var xValues = ["Italia", "Francia", "Espania", "USA", "Argentina", "Alemania"];
+var barColors = ["red", "green","blue","orange","brown"];
+var yValues = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+console.log(yValues);
+//Configuracion del grafico 1
+
+
+var data = {
+    labels: xValues,
+    datasets: [{
+      label: "2021",
+      borderColor: 'rgb(255, 99, 132)',
+      data: yValues
+    }]
+}
+
+//Etiquetas del Valor X
+
+
  const config = {
-   type: 'scatter',
-   data: JSON.parse(httpGet('http://localhost:3000/consultarDato')),
+   type: 'bar',
+   data: data,
    options: {
        showLine: true,
        plugins: {
+            autocolors: {
+            mode: 'data'
+            },
            title: {
                display: true,
-               text: 'Humedad y Presion'
+               text: 'Venta Vinos En El Mundo'
            }
        },
        scales: {
            y: {
                beginAtZero: true,
                ticks: {
-                   
                    callback: function(value, index, ticks) {
-                       return '%' + value;
+                       return  value+'M';
                    }
                }
            }
@@ -25,17 +48,13 @@
    }
 };
 
-
+//Grafico 1
 const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
- );
- 
-const myChart2 = new Chart(
-    document.getElementById('myChart2'),
-    config
- );
+   document.getElementById('myChart'),
+   config
+);
 
+//Funcion Get Http
 function httpGet(theUrl) {
  let xmlHttpReq = new XMLHttpRequest();
  xmlHttpReq.open("GET", theUrl, false); 
@@ -44,18 +63,25 @@ function httpGet(theUrl) {
 }
 
 
+//Subir datos a la DB cuando clickea el Boton
+function subirDatosDB (){
+    setTimeout(500);
+    myChart.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+        setTimeout(()=>{
+            myChart.update();
+            location.reload();
+    },1000);
 
-function clicked (){
-setTimeout(500);
-myChart.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+}
 
-myChart2.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+//Actualizar grafico cada x segundos
 
-setTimeout(()=>{
-myChart.update();
-myChart2.update();
-location.reload();
-},1000);
 
+//Actualizar Dato Funcion
+function updateChart(chart){
+    chart.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+    setTimeout(()=>{
+        chart.update('none');
+    },1000);    
 }
 

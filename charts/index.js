@@ -8,7 +8,7 @@ const mysql = require('mysql');
 
 app.use(bodyParser.urlencoded({
   extended:true
-}));
+})); 
 
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 app.set('view engine', 'hbs');
@@ -38,43 +38,41 @@ con.connect(function(err) {
 });
 
 app.get('/', (req, res) => {
-  res.render('index', {
-    Titulo: "juas juas",
-    data: data
-})
+  res.render('index', {})
 });
 
 app.get('/consultarDato', (req, res) => {
-  con.query("SELECT humedad,presion FROM sensor ORDER BY humedad, presion ASC", function (err, result, fields) {
+  con.query("SELECT humedad,presion FROM sensor ORDER BY presion DESC", function (err, result, fields) {
     if (err) throw err;
-    console.log(result);
-    
-    result.forEach(element => {
-        console.log(element.humedad)
-    });
+
     data.datasets[0].data.length = 0;
+    let datos = []
     result.forEach(a => {
-      data.datasets[0].data.push({x: a.presion , y: a.humedad})
+      datos.push(a.presion)
     });
-    
-    res.send(JSON.stringify(data));
+    console.log("consultarDato "+datos);
+    res.send(JSON.stringify(datos));
   });
-
-
-
 });
-
 
 
 
 app.post('/subirDato', (req, res) => {
+console.log(req.body)
+for (var key in req.body) {
+  if (req.body.hasOwnProperty(key)) {
+    var valueKey = req.body[key];
+    if(!isNaN(valueKey) && valueKey != ''){
+      console.log(valueKey);
+    var sql = "INSERT INTO sensor (presion) VALUES ("+valueKey+")";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+    });
+  }
+  }
+}
 
-  var sql = "INSERT INTO sensor (humedad, presion) VALUES ( "+req.body.humedad+", "+req.body.presion+")";
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-  
 })
 
 

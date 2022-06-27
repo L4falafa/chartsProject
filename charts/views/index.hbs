@@ -4,27 +4,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estdistica Anka</title>
+
+    <!----------------- SCRIPT -------------->
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-autocolors"></script>   
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!----------------- CSS ----------------->
     <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/chart.js" defer></script>
-    <title>Document</title>
+
 </head>
 <body>
+    
+    <div class="container">
 
-    <form action="/subirDato" method="post">
-        <label for="humedad" id="humedad">humedad</label>
-        <input type="text" name="humedad" id="humedad">
-        <label for="presion" id="presion">presion</label>
-        <input type="text" name="presion" id="presion">
-        <input type="submit" onclick="clicked();">
-    </form>
+        <!------------------ NAV -----------------> 
+        
+        <nav class="menu">
+            <div class="menu--logo">
+                <img src="/img/logo.png" alt="logo">
+            </div>
+            <div class="menu--options">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#formulario">Formulario</a></li>
+                    <li><a href="#estadistica">Estadistica</a></li>
+                </ul>
+            </div>
+        </nav>
 
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>
-    <div>
-        <canvas id="myChart2"></canvas>
+        <!----------------- INICIO -------------->
+        
+        <div class="inicio--left" id="inicio">
+            <h1>Bienvenido a ... <br>Estadistica Anka</h1>
+            <p>Estadistica Anka es un simulador online que se encarga de recrear graficos a traves de los datos que el usuario quiera ingresar. Esta empresa online fue fundada en el año 2022 por dos estudiantes de la escuela Tecnica Reconquista de Buenos Aires.</p>
+        </div>
+        <div class="inicio--right">
+            <img src="/img/inicio.png" alt="inicio">
+        </div>
+
+        <!----------------- FORMULARIO --------------->
+
+        <div class="container--formulario" id="formulario">
+
+            <h1 class="logo">Ingrese los <span>Datos</span> a Graficar</h1>
+    
+            <div class="contact-wrapper animated bounceInUp">
+                <div class="contact-form">
+                    <h3>Contact us</h3>
+                    <form action="/subirDato" method="post">
+                        <p>
+                            <label for="dato" id="dato">Dato 0:</label>
+                            <input type="text" name="dato" id="dato">
+                        </p>
+                        <p>
+                            <label for="dato1" id="dato">Dato 1:</label>
+                            <input type="text" name="dato1" id="dato1">
+                        </p>
+                        <p>
+                            <label for="dato2" id="dato2">Dato 2:</label>
+                            <input type="text" name="dato2" id="dato2">
+                        </p>
+                        <p>
+                            <label for="dato3" id="dato3">Dato 3:</label>
+                            <input type="text" name="dato3" id="dato3">
+                        </p>
+                        <p class="block">
+                            <label for="dato4" id="dato4">Dato 4:</label>
+                            <input type="text" name="dato4" id="dato4">
+                        </p>
+                        <p class="block">
+                            <button type="submit" id="enviar" onclick="subirDatosDB();">Subir</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Instrucciones</h4>
+                    <p>1. Ingresa los datos que quiera usted graficar. <br> <br>
+                       2. No es necesario llenar todos los espacios. <br> <br>
+                       3. Una vez termiano, toque el boton enviar. <br> <br>
+                       4. Baje con el scroll, y asi podra ver el grafico.
+                    </p>
+                    <a href="#estadistica"><i class="fa-solid fa-arrow-down"></i></a>
+                </div>
+    
+            </div>
+
+        </div>
+
+        <!------------------ ESTADISTICA ---------------->
+            
+
+        <div class="estadistica" id="estadistica">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <!------------------ FOOTER ------------------->
+
+        <footer class="footer">
+            <div class="footer--left">
+                <h1>Menu</h1>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#formulario">Formulario</a></li>
+                    <li><a href="#estadistica">Estadistica</a></li>
+                </ul>
+            </div>
+            <div class="footer--right">
+                <img src="/img/logo.png" alt="logo">
+            </div>
+        </footer>
+
     </div>
 
 </body>
+<!--------------- Tiene que cargar despues este script -------------->
+    <script src="/js/chart.js"></script>
 </html>
