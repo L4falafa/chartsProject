@@ -43,4 +43,8 @@ Termine con un ejemplo de cómo sacar algunos datos del sistema o usarlos para u
 
 ## Uso <a name = "usage"> </a>
 
+<<<<<<< HEAD
 Agregue notas sobre cómo usar el sistema.
+=======
+Agregue notas sobre cómo usar el sistema.
+>>>>>>> aa740437ce367e7a2bb863b83c3e7f9b0753c612
