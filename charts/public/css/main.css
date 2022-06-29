@@ -271,3 +271,33 @@
 .footer--right img{
     height: 80px;
 }
+
+/*===================== RESPONSIVE ===================*/
+
+@media screen and (max-width: 480px){
+    
+    .menu{
+        width: 450px;
+    }
+
+    .menu--logo img{
+        height: 35px;
+    }
+
+    .inicio--left{
+        grid-column: 2 / 10;
+    }
+
+    .inicio--left h1{
+        font-size: 2.2rem;
+    }
+
+    .inicio--left p{
+
+    }
+
+    .inicio--right{
+        display: none;
+    }
+    
+}
