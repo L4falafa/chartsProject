@@ -54,6 +54,24 @@ const myChart = new Chart(
    config
 );
 
+//Grafico 2
+const myChart1= new Chart(
+    document.getElementById('myChart1'),
+    config
+ );
+
+ //Grafico 3
+const myChart2 = new Chart(
+   document.getElementById('myChart2'),
+   config
+);
+
+//Grafico 4
+const myChart3 = new Chart(
+    document.getElementById('myChart3'),
+    config
+ );
+
 //Funcion Get Http
 function httpGet(theUrl) {
  let xmlHttpReq = new XMLHttpRequest();
@@ -67,6 +85,16 @@ function httpGet(theUrl) {
 function subirDatosDB (){
     setTimeout(500);
     myChart.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+        setTimeout(()=>{
+            myChart.update();
+            location.reload();
+    },1000);
+
+}
+
+function borrarDatosDB (){
+    setTimeout(500);
+    myChart.config.data = JSON.parse(httpGet('http://localhost:3000/borrarDatos'));
         setTimeout(()=>{
             myChart.update();
             location.reload();

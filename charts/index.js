@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 app.get('/consultarDato', (req, res) => {
   con.query("SELECT humedad,presion FROM sensor ORDER BY presion DESC", function (err, result, fields) {
     if (err) throw err;
-
+    
     data.datasets[0].data.length = 0;
     let datos = []
     result.forEach(a => {
@@ -63,12 +63,14 @@ for (var key in req.body) {
   if (req.body.hasOwnProperty(key)) {
     var valueKey = req.body[key];
     if(!isNaN(valueKey) && valueKey != ''){
-      console.log(valueKey);
+
+    con.query("DELETE FROM `sensor` WHERE 1")
     var sql = "INSERT INTO sensor (presion) VALUES ("+valueKey+")";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("1 record inserted");
     });
+    
   }
   }
 }
