@@ -4,7 +4,7 @@ Chart.register(autocolors);
 
 var xValues = ["Italia", "Francia", "Espania", "USA", "Argentina", "Alemania"];
 var barColors = ["red", "green","blue","orange","brown"];
-var yValues = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+var yValues = JSON.parse(httpGet('http://localhost:3000/datos/consultarDato'));
 console.log(yValues);
 //Configuracion del grafico 1
 
@@ -84,7 +84,7 @@ function httpGet(theUrl) {
 //Subir datos a la DB cuando clickea el Boton
 function subirDatosDB (){
     setTimeout(500);
-    myChart.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+    myChart.config.data = JSON.parse(httpGet('http://localhost:3000/datos/consultarDato'));
         setTimeout(()=>{
             myChart.update();
             location.reload();
@@ -110,7 +110,7 @@ setInterval(() => {
 
 //Actualizar Dato Funcion
 function updateChart(chart){
-    chart.config.data = JSON.parse(httpGet('http://localhost:3000/consultarDato'));
+    chart.config.data = JSON.parse(httpGet('http://localhost:3000/datos/consultarDato'));
     setTimeout(()=>{
         chart.update('none');
     },1000);    
