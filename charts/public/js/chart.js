@@ -84,16 +84,24 @@ function httpGet(theUrl) {
 //Subir datos a la DB cuando clickea el Boton
 function subirDatosDB (){
     setTimeout(500);
-    myChart.config.data = JSON.parse(httpGet('http://localhost:3000/datos/consultarDato'));
+    axios.get('http://localhost:3000/datos/consultarDato')
+    .then(function (response) {
+        myChart.config.data = JSON.parse(response);
         setTimeout(()=>{
             myChart.update();
             location.reload();
-    },1000);
-
+        },1000);
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
 }
 
 function borrarDatosDB (){
     setTimeout(500);
+        
     myChart.config.data = JSON.parse(httpGet('http://localhost:3000/borrarDatos'));
         setTimeout(()=>{
             myChart.update();
@@ -110,9 +118,21 @@ setInterval(() => {
 
 //Actualizar Dato Funcion
 function updateChart(chart){
-    chart.config.data = JSON.parse(httpGet('http://localhost:3000/datos/consultarDato'));
+    axios.get('http://localhost:3000/datos/consultarDato')
+  .then(function (response) {
+    chart.config.data = JSON.parse(response);
     setTimeout(()=>{
         chart.update('none');
-    },1000);    
+    },1000);  
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+  
 }
 

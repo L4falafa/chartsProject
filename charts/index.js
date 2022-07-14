@@ -19,7 +19,6 @@ app.use(express.static(__dirname + "/public"));
 
 //Rutas a utilizar
 const datos = require('./routes/datos');
-
 app.use('/datos', datos); 
 
 app.get('/', (req, res) => {
