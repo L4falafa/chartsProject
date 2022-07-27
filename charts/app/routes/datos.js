@@ -1,5 +1,5 @@
 const express = require('express');
-const dbManager = require('../models/dbManager');
+const dbManager = require('dbManager');
 const router = express.Router();
 
 var data = {

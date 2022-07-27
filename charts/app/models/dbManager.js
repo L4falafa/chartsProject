@@ -2,7 +2,7 @@
 //Se encarga del manejo de la base de datos actualmente usando MySql
 const { query } = require('express');
 const mysql = require('mysql');
-const config = require('../config/Config.js');
+const config = require('../../config/Config');
 
 //Configuracion de la base de datos por el archivo Config.js
 var con = mysql.createConnection({
