@@ -11,22 +11,21 @@ app.use(bodyParser.urlencoded({
   extended:true
 })); 
 
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 app.set('view engine', 'hbs');
-app.set("views", __dirname + "/views");
+app.set("views", path.join(__dirname + "/views"));
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname + "/public")));
 
 //Rutas a utilizar
-const datos = require('./routes/datos');
+/*const datos = require('./routes/datos');
 app.use('/datos', datos); 
-
+*/
 app.get('/', (req, res) => {
 
   res.render('index', {})
 });
 
 app.listen(port, () => {
-  dbManager.testConnection();
+  //dbManager.testConnection();
   console.log(`Example app listening on port ${port}`)
 })
